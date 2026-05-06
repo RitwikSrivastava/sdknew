@@ -67,6 +67,7 @@ function buildDmImg(parsed, altText, isPriority) {
     img.setAttribute('data-dm-priority', '');
     img.setAttribute('data-dm-role', 'hero');
     img.setAttribute('fetchpriority', 'high');
+    img.setAttribute('data-dm-no-dimensions', '');
   } else {
     img.setAttribute('loading', 'lazy');
   }
