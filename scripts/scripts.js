@@ -11,6 +11,8 @@ import {
   loadSections,
   loadCSS,
 } from './aem.js';
+import { decorateExternalImages, activateDmSdk, promoteFirstBlockDmImage }
+  from './utils/dm-integration.js';
 
 /**
  * Moves all the attributes from a given elmenet to another given element.
@@ -81,6 +83,7 @@ export function decorateMain(main) {
   decorateButtons(main);
   decorateIcons(main);
   buildAutoBlocks(main);
+  decorateExternalImages(main);
   decorateSections(main);
   decorateBlocks(main);
 }
@@ -96,7 +99,10 @@ async function loadEager(doc) {
   if (main) {
     decorateMain(main);
     document.body.classList.add('appear');
+    const sdkReady = activateDmSdk(main);
     await loadSection(main.querySelector('.section'), waitForFirstImage);
+    await sdkReady;
+    promoteFirstBlockDmImage(main);
   }
 
   try {
