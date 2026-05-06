@@ -19,6 +19,22 @@
   display: block;
 }
 
+.columns h2 {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold, #c9a84c);
+  margin-top: 0;
+  margin-bottom: 0.75em;
+}
+
+.columns p {
+  color: var(--text-color, #e8dcc8);
+  line-height: 1.8;
+}
+
 @media (width >= 900px) {
   .columns > div {
     align-items: center;
