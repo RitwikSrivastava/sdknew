@@ -26,6 +26,11 @@ export default function decorate(block) {
         moveInstrumentation(img, optimizedPic.querySelector('img'));
         img.closest('picture').replaceWith(optimizedPic);
       });
+      // SDK-managed images are absolutely positioned — prevent SDK from
+      // setting dimensional attributes that fight the CSS layout.
+      imageCell.querySelectorAll('img[data-dm-src]').forEach((img) => {
+        img.setAttribute('data-dm-no-dimensions', '');
+      });
     }
     imageCell.className = 'z-image-media';
 
