@@ -27,7 +27,8 @@ export default function decorate(block) {
         img.closest('picture').replaceWith(optimizedPic);
       });
       const hasPicture = imageCell.querySelector('picture');
-      imageCell.className = hasPicture ? 'cards-card-image' : 'cards-card-body';
+      const hasDmImg = imageCell.querySelector('img[data-dm-src]');
+      imageCell.className = (hasPicture || hasDmImg) ? 'cards-card-image' : 'cards-card-body';
     }
 
     bodyCells.forEach((cell) => { cell.className = 'cards-card-body'; });
