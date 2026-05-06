@@ -3,7 +3,7 @@ export default function decorate(block) {
   const [imageRow, altRow, ...contentRows] = rows;
 
   const anchor = imageRow?.querySelector('a[href]');
-  const imageUrl = anchor?.href || imageRow?.querySelector('img[src]')?.src || '';
+  const imageUrl = anchor?.href || imageRow?.querySelector('img:not([data-dm-src])')?.src || '';
 
   if (imageUrl) {
     const altText = altRow?.querySelector('div')?.textContent?.trim() || '';
